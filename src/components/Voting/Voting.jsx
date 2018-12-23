@@ -71,14 +71,16 @@ class Voting extends React.Component {
 
   render() {
     return(
-      <div>
-        {this.generateEntries()}
-        <h5>Click to vote!</h5>
-        {this.generateCandidateVoteButtons()}
-        <br/><br/>
-        <p>
-          {this.getLeadCandidate()}
-        </p>
+      <div className="card">
+        <div className="card-body">
+          {this.generateEntries()}
+          <h5>Click to vote!</h5>
+          {this.generateCandidateVoteButtons()}
+          <br/><br/>
+          <p>
+            {this.getLeadCandidate()}
+          </p>
+        </div>
       </div>
     );
   }

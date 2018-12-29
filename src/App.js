@@ -13,7 +13,12 @@ class App extends Component {
         </Navbar>
         <br/>
         <div className="container">
-          Import any custom components inside this container, and try them out!
+          <div className="row">
+            <div className="col-sm">
+              <h3>Import any custom components inside this container, and try them out!</h3>
+              {/* Import a component under this comment */}
+            </div>
+          </div>
         </div>
       </div>
     );

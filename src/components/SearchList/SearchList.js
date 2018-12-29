@@ -3,7 +3,9 @@ import React from 'react';
 const SearchList = (props) => {
   // Assumes a simple data structure with just a name and ID element
   const filteredSearchItems = props.items.filter((item) => {
-    return item.name.toLowerCase().indexOf(props.filterText.toLowerCase()) !== -1;
+    return props.caseSensitive ?
+      item.name.indexOf(props.filterText) !== -1 :
+      item.name.toLowerCase().indexOf(props.filterText.toLowerCase()) !== -1;
   });
 
   return(

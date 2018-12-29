@@ -7,14 +7,21 @@ import data from './sample/sample';
 
 class SearchApp extends React.Component {
   state = {
-    filterText: ''
+    filterText: '',
+    caseSensitive: false
   }
 
-  onUserInput = (filterTerm) => {
+  onSearchInput = (filterTerm) => {
     this.setState({
       filterText: filterTerm
     });
     console.log(this.state.filterText);
+  }
+
+  onCheckboxInput = () => {
+    this.setState((prevState) => ({
+      caseSensitive: !prevState.caseSensitive
+    }));
   }
 
   render() {
@@ -22,12 +29,15 @@ class SearchApp extends React.Component {
       <div>
         <SearchBar
           filterText={this.state.filterText}
-          onUserInput={this.onUserInput}
+          onSearchInput={this.onSearchInput}
+          caseSensitive={this.state.caseSensitive}
+          onCheckboxInput={this.onCheckboxInput}
         />
         <br/>
         <SearchList
           items={data}
           filterText={this.state.filterText}
+          caseSensitive={this.state.caseSensitive}
         />
       </div>
     )

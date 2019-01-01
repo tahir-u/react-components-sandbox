@@ -4,7 +4,7 @@ import Month from './Month';
 import Weekdays from './Weekdays';
 import Days from './Days';
 
-import * as dateConstants from './constants';
+import * as utils from './utils';
 import './Calendar.css';
 
 class Calendar extends React.Component {
@@ -12,46 +12,20 @@ class Calendar extends React.Component {
     date: new Date()
   }
 
-  getMonth() {
-    return dateConstants.months[this.state.date.getMonth()];
-  }
-
-  getYear() {
-    return this.state.date.getFullYear();
-  }
-
-  getDay() {
-    return this.state.date.getDate();
-  }
-
-  getDays() {
-    const year = this.getYear();
-    const month = this.state.date.getMonth();
-
-    return 32 - new Date(year, month, 32).getDate();
-  }
-
-  getStartingDay() {
-    const year = this.getYear();
-    const month = this.state.date.getMonth();
-
-    return (new Date(year, month, 1)).getDay();
-  }
-
   render() {
     return(
       <React.Fragment>
         <Month
-          month={dateConstants.months[this.state.date.getMonth()]}
-          year={this.state.date.getFullYear()}
+          month={utils.getMonth(this.state.date)}
+          year={utils.getYear(this.state.date)}
         />
         <Weekdays
-          weekdays={dateConstants.days}
+          weekdays={utils.days}
         />
         <Days
-          numberOfDays={this.getDays()}
-          currentDay={this.getDay()}
-          startingDay={this.getStartingDay()}
+          numberOfDays={utils.getDays(this.state.date)}
+          currentDay={utils.getDay(this.state.date)}
+          startingDay={utils.getStartingDay(this.state.date)}
         />
       </React.Fragment>
     );

@@ -21,14 +21,21 @@ class Calendar extends React.Component {
   }
 
   getDay() {
-    return this.state.date.getDay();
+    return this.state.date.getDate();
   }
 
   getDays() {
     const year = this.getYear();
     const month = this.state.date.getMonth();
-    
+
     return 32 - new Date(year, month, 32).getDate();
+  }
+
+  getStartingDay() {
+    const year = this.getYear();
+    const month = this.state.date.getMonth();
+
+    return (new Date(year, month, 1)).getDay();
   }
 
   render() {
@@ -44,6 +51,7 @@ class Calendar extends React.Component {
         <Days
           numberOfDays={this.getDays()}
           currentDay={this.getDay()}
+          startingDay={this.getStartingDay()}
         />
       </React.Fragment>
     );
